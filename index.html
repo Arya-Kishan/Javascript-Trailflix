@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./Javascript/script.js" defer></script>
+    <title>TRAIL FLIX</title>
+</head>
+
+<body>
+    <section class="main_body">
+        <nav>
+            <div class="left-cont">
+
+                <div class="logo">
+                    <img src="./Images/Logo2.png" alt="" srcset="">
+                    <img class="profile" src="./Images//profile.png" alt="" srcset="">
+                </div>
+
+                <ul class="ul slide">
+                    <ul>
+                        <li class="links"><a href="index.html">Home</a></li>
+                        <li onclick="handleRoute(28)" class="links"><a href="action.html">Action</a></li>
+                        <li onclick="handleRoute(12)" class="links"><a href="action.html">Adventure</a></li>
+                        <li onclick="handleRoute(9648)" class="links"><a href="action.html">Mystery</a></li>
+                        <li onclick="handleRoute(14)" class="links"><a href="action.html">Fantasy</a></li>
+                        <li onclick="handleRoute(27)" class="links"><a href="action.html">Horror</a></li>
+
+                    </ul>
+                </ul>
+            </div>
+            <div class="right-cont">
+
+                <div class="bellclose">
+                    <div onclick="handleBellClose(this)"><img src="./Images/bell1.png" alt=""></div>
+                </div>
+
+                <div class="bellopen">
+                    <div onclick="handleBellOpen(this)"><img src="./Images/bell.png" alt=""></div>
+                </div>
+
+                <div>
+                    <a href="index.html"><img src="./Images/home1.png" alt=""></a>
+                </div>
+
+                <!-- <div class="more hamburger">
+                    <div onclick="handleMoreCategory()"><img src="./Images/hamburger.png" alt=""></div>
+                </div>
+
+                <div class="less hamburger">
+                    <div onclick="handleLessCategory()"><img src="./Images/cross.png" alt=""></div>
+                </div> -->
+
+                <div>
+                    <div class="profile"><a href="form.html"><img src="./Images/profile.png" alt=""></a></div>
+                </div>
+
+            </div>
+        </nav>
+
+
+        <!-- HEADER-------------------------- -->
+        <header>
+            <section class="header">
+                <div class="header--box1">
+                    <div class="header1_textbox">
+                        <span class="trail_logo"><img src="./Images/Tlogo.jpeg" alt="" srcset="">TRAILFLIX</span>
+                        <h1 class="movie_name">THE FLASH</h1>
+                        <div class="introduction">
+                            <span>#1 TV Shows Today</span>
+                            <span class="movie_description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                <br>
+                                Ad, earum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae,
+                                porro.</span>
+                            <div class="btn_bg">
+                                <button onclick="header_trailer()" class="btn playbtn">
+                                    <div><img class="btn_img" src="./Images/play.png" alt="" srcset=""><span>Play</span>
+                                    </div>
+                                </button>
+                                <button onclick="pause_func()" class="btn pausebtn">
+                                    <div><img class="btn_img" src="./Images/pause.png" alt=""
+                                            srcset=""><span>Close</span></div>
+                                </button>
+                                <button class="btn info_btn">
+                                    <img class="btn_img" src="./Images/info.png" alt="" srcset=""><span>More Info</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header--box2"></div>
+            </section>
+        </header>
+
+        <!-- CATEGORY------------------ -->
+        <section class="main_category"></section>
+        <footer>
+            <div class="foot2">
+                <b>Copyright &copy; 2022 Arya Kishan</b>
+            </div>
+        </footer>
+
+    </section>
+
+    <!-- VIDEO SECTION -->
+    <section class="movie_trailer"></section>
+
+    <div class="error_pop"><img src="./Images/sorry2.png" alt="" srcset=""></div>
+    <div class="movie_info"></div>
+
+    <div class="gif"><span class="gif_span">WELCOME TO <b>TRAILFLIX</b> <br>WHERE YOU WILL FIND <br> <b> TRAILER</b> OF
+            LATEST POPULAR
+            MOVIES</span>
+        <div><img src="./Images/anime.gif" alt=""></div>
+    </div>
+
+    <div class="select_main">
+        <div class="select">
+            <div class="select_btn">
+                <button onclick="handleBellClose(this)">X</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="tap_main">
+        <div class="tap">
+            <div onclick="handleCatch(this)" class="slide_left"></div>
+        </div>
+    </div>
+    
+    <div class="redinfo_main">
+        <div class="redinfo">
+            <h1 class="redinfo_name">TITLE NAME</h1>
+
+            <div>
+                <span>Language : <span class="redinfo_language">language</span></span>
+                <span>Title : <span class="redinfo_originaltitle">ORIGINAL TITLE</span></span>
+            </div>
+
+            <div class="redinfo_img"></div>
+
+            <div>
+                <span>Description : <P class="redinfo_description">Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Earum ipsa mollitia
+                        quo
+                        eaque quisquam hic.</P></span>
+            </div>
+
+            <div>
+                <span>IMDB : <span class="redinfo_imdb">6.6</span></span>
+                <span>Date : <span class="redinfo_date">20-20-20</span></span>
+            </div>
+
+            <div><button onclick="handleRedInfo()">Close</button><button onclick="handleRedPlay(this)">Play</button></div>
+
+        </div>
+    </div>
+
+    <div class="redtrailer_main">
+        <div class="redtrailer"></div>
+    </div>
+
+</body>
+
+</html>

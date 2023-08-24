@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/action.css">
+    <script src="./Javascript/action.js" defer></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- NAVBAR------------------------ -->
+    <nav>
+        <div class="left-cont">
+
+            <div class="logo">
+                <img src="./Images/Logo2.jpeg" alt="" srcset="">
+                <img class="profile" src="./Images//profile.png" alt="" srcset="">
+            </div>
+
+            <ul class="ul slide">
+                <ul>
+                    <li class="links"><a href="index.html">Home</a></li>
+                    <li onclick="handleRoute(28)" class="links"><a href="action.html">Action</a></li>
+                    <li onclick="handleRoute(12)" class="links"><a href="action.html">Adventure</a></li>
+                    <li onclick="handleRoute(9648)" class="links"><a href="action.html">Mystery</a></li>
+                    <li onclick="handleRoute(14)" class="links"><a href="action.html">Fantasy</a></li>
+                    <li onclick="handleRoute(27)" class="links"><a href="action.html">Horror</a></li>
+
+                </ul>
+            </ul>
+        </div>
+        <div class="right-cont">
+
+            <div class="bellclose">
+                <div onclick="handleBellClose(this)"><img src="./Images/bell1.png" alt=""></div>
+            </div>
+
+            <div class="bellopen">
+                <div onclick="handleBell(this)"><img src="./Images/bell.png" alt=""></div>
+            </div>
+
+            <div>
+                <a href="index.html"><img src="./Images/home1.png" alt=""></a>
+            </div>
+
+            <div class="more hamburger">
+                <div onclick="handleMoreCategory()"><img src="./Images/hamburger.png" alt=""></div>
+            </div>
+
+            <div class="less hamburger">
+                <div onclick="handleLessCategory()"><img src="./Images/cross.png" alt=""></div>
+            </div>
+
+            <div>
+                <div class="profile"><img src="./Images/profile.png" alt=""></div>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- ----------BODY---------- -->
+    <section class="main_body">
+        <h1>ACTION</h1>
+        <section class="action">
+            <div class="action_boxes"></div>
+        </section>
+
+        <div class="info_main">
+            <div class="info">
+                <h1 class="info_name">TITLE NAME</h1>
+
+                <div>
+                    <span>Language : <span class="info_language">language</span></span>
+                    <span>Title : <span class="info_originaltitle">ORIGINAL TITLE</span></span>
+                </div>
+
+                <div class="info_img"></div>
+
+                <div>
+                    <span>Description : <P class="info_description">Lorem ipsum dolor sit, amet consectetur adipisicing
+                            elit. Earum ipsa mollitia
+                            quo
+                            eaque quisquam hic.</P></span>
+                </div>
+
+                <div>
+                    <span>IMDB : <span class="info_imdb">6.6</span></span>
+                    <span>Date : <span class="info_date">20-20-20</span></span>
+                </div>
+
+                <div><button onclick="handleInfo()">Close</button><button onclick="handlePlay()">Play</button></div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="trailer_main">
+        <div class="trailer"></div>
+    </div>
+
+
+
+</body>
+
+</html>

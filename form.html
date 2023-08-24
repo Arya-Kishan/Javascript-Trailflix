@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section{
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+            border: 2px solid white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2vh;
+            padding: 6vh 4vw;
+            box-shadow: 0 0 5px 5px white;
+            background: radial-gradient(circle at 50% 90%,red 56%,black 36%);
+        }
+        .box div{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1vh;
+            color: white;
+        }
+        input{
+            border: 2px solid white;
+            font-size: 15px;
+        }
+        button{
+            color: white;
+            background-color: black;
+            border: 2px solid red;
+            padding: 5px 8px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="box">
+            <div><img src="./Images/Tlogo.jpeg" alt="" srcset=""></div>
+            <div>Name<input type="text"></div>
+            <div>Email<input type="text"></div>
+            <div>Age<input type="text"></div>
+            <button onclick="handleDone()">DONE</button>
+        </div>
+    </section>
+    <script>
+        const handleDone = ()=>{
+            window.location.href = "index.html"
+        }
+    </script>
+</body>
+</html>
