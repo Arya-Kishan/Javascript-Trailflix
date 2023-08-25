@@ -117,14 +117,14 @@ const hero_section = async () => {
 
     movie_description.innerHTML = (hero[num].overview)
 
-    image_url = `url(https://image.tmdb.org/t/p/w500${hero[num].backdrop_path})`;
+    image_url = `<img src="https://image.tmdb.org/t/p/w500${hero[num].backdrop_path}">`;
 }
 
 const pause_func = () => {
     pausebtn.style.display = "none"
     playbtn.style.display = "inline-block"
     header_box2.innerHTML = ``
-    header_box2.style.backgroundImage = image_url;
+    header_box2.innerHTML = image_url;
 }
 
 const header_trailer = async () => {
@@ -166,14 +166,22 @@ window.addEventListener("load", () => {
 })
 
 
-const handleRoute = (id) => {
-    localStorage.setItem('route', id)
+const handleRoute = (a) => {
+    console.log(a)
+    console.log(a.dataset.id)
+    console.log(a.innerText)
+    let obj = { 'id': a.dataset.id, 'name': a.innerText }
+    obj = JSON.stringify(obj)
+    console.log(obj)
+    localStorage.setItem('route', obj)
 }
+
+
 // ADDING NAME TO TAP SLIDE AND SHOW LEFT
 const Movies_ID = async (category) => {
     category.forEach((e) => {
         let name12 = e.name.toLowerCase()
-        tap.innerHTML += `<a href="action.html"><div onclick="handleRoute(${e.id})" class="tap_links">${e.name}</div></a>`
+        tap.innerHTML += `<a href="action.html"><div data-id="${e.id}" onclick="handleRoute(this)" class="tap_links">${e.name}</div></a>`
     })
     category.forEach(async (e) => {
         let movies = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=7fad363f58889077cd601fe2d0ed4fb7&with_genres=${e.id}`)
@@ -283,14 +291,14 @@ window.onscroll = function (e) {
     if (window.scrollY > 250) {
         nav.style.visibility = "hidden"
     }
-    else{
+    else {
         nav.style.visibility = "visible"
 
     }
 };
 
 
-tap.addEventListener("click",(e)=>{
+tap.addEventListener("click", (e) => {
     if (tap_main.className == "tap_main") {
         tap_main.className = "tap_main2"
     } else {
@@ -298,7 +306,7 @@ tap.addEventListener("click",(e)=>{
     }
 })
 
-select.addEventListener("click",(e)=>{
+select.addEventListener("click", (e) => {
     bellclose.style.display = "none"
     bellopen.style.display = "block"
     select.style.transition = "all .5s ease"

@@ -16,17 +16,28 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            background-image: url("./Images/leaf.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
         }
         .box{
-            border: 2px solid white;
+
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             gap: 2vh;
             padding: 6vh 4vw;
-            box-shadow: 0 0 5px 5px white;
-            background: radial-gradient(circle at 50% 90%,red 56%,black 36%);
+            box-shadow: 0 0 15px 10px rgb(5, 59, 29);
+            background-image: url("./Images/leaf.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        div img{
+            width: 100px;
+        }
+        .box div:nth-child(1){
+            padding-right: 25px;
         }
         .box div{
             display: flex;
@@ -41,17 +52,21 @@
             font-size: 15px;
         }
         button{
-            color: white;
+            color: rgb(0, 125, 2);
             background-color: black;
-            border: 2px solid red;
+            border: 2px solid rgb(3, 51, 28);
             padding: 5px 8px;
+            border-radius: 10px;
+        }
+        input{
+            background: transparent;
         }
     </style>
 </head>
 <body>
     <section>
         <div class="box">
-            <div><img src="./Images/Tlogo.jpeg" alt="" srcset=""></div>
+            <div><img src="./Images/firefly.gif" alt="" srcset=""></div>
             <div>Name<input type="text"></div>
             <div>Email<input type="text"></div>
             <div>Age<input type="text"></div>

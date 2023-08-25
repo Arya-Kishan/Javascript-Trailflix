@@ -6,6 +6,11 @@
     scroll-behavior: smooth;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+a{
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
 
 body {
     background-color: black;
@@ -73,12 +78,6 @@ nav {
 
 .left-cont ul li {
     list-style: none;
-    cursor: pointer;
-}
-
-.left-cont ul li a {
-    text-decoration: none;
-    color: white;
     cursor: pointer;
 }
 
@@ -328,35 +327,6 @@ nav {
     border-radius: 20px;
 }
 
-.trailer11 {
-    background: transparent;
-    position: fixed;
-    bottom: 4vw;
-    right: 2vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5vw;
-    padding: 1vw;
-}
-
-.trailer_enlarge {
-    background-color: transparent;
-    border-radius: 15px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5vw;
-    height: 100vh;
-    width: 100vw;
-    padding: 10vh 20vw;
-}
-
 .movie_trailer_btn {
     display: flex;
     flex-direction: row;
@@ -367,8 +337,9 @@ nav {
 
 iframe {
     background: transparent;
+    border-radius: 20px;
     border: none;
-    box-shadow: 0 0 8px 4px rgb(255, 0, 0);
+    box-shadow: 0 0 10px 10px black;
 }
 
 
@@ -392,8 +363,6 @@ footer {
 
 /* -------------------------VIDEO------------------------- */
 .header_video_trailer {
-    height: 50vh;
-    border-radius: 0;
     position: relative;
 }
 
@@ -589,35 +558,30 @@ video {
     position: relative;
 }
 
-.tap a {
-    text-decoration: none;
-}
 
 .tap_links {
     border-bottom: 1px solid white;
-    background: linear-gradient(black,transparent);
     padding: 10px;
     text-align: center;
 }
 
 .slide_left {
     z-index: -1;
-    background-color: transparent;
-    border-left: 2px solid white;
-    border-bottom: 2px solid white;
-    width: 20px;
-    height: 20px;
-    transform: rotate(45deg);
+    background-image: url('../Images/firefly.gif');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
     position: absolute;
     bottom: 15vh;
-    left: -1vw;
+    left: -50px;
     cursor: pointer;
 }
 
 
 /* ---------------RED INFO---------------------- */
 .redinfo {
-    border: 2px soild black;
     border-radius: 20px;
     box-shadow: 0 0 8px 8px white;
     background: linear-gradient(black,transparent, red,black);
@@ -639,51 +603,28 @@ video {
 }
 
 .redinfo_img img {
-    border: 2px solid green;
     border-radius: 15px;
-    box-shadow: 0 0 6px 6px white;
+    box-shadow: 0 0 10px 8px black;
     width: 40%;
 }
 
-.redinfo div:nth-child(2) {
+.redinfo div {
     width: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.redinfo div:nth-child(2) {
     justify-content: space-around;
 }
 
-.redinfo div:nth-child(3) {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.redinfo div:nth-child(4) {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .redinfo div:nth-child(5) {
-    width: 100%;
-    display: flex;
     justify-content: space-around;
 }
 
 .redinfo div:nth-child(6) {
-    width: 100%;
-    display: flex;
     justify-content: space-around;
-    align-items: center;
-
 }
-
-.redinfo div:nth-child(6) button {
-    padding: .7vw 2.5vw;
-    border: 1px solid white;
-}
-
 /* --------------TRAILER--------------- */
 .redtrailer {
     display: flex;
@@ -697,7 +638,6 @@ video {
 }
 
 iframe {
-    box-shadow: 0 0 10px 10px black;
     width: 50vw;
     height: 30vw;
 }
@@ -750,10 +690,6 @@ iframe {
         background-color: rgb(0, 0, 0);
     }
 
-    .right-cont img {
-        cursor: none;
-    }
-
     .left-cont img {
         width: 14vw;
     }
@@ -799,10 +735,6 @@ iframe {
     }
 
     iframe {
-        background: transparent;
-        border: none;
-        border-radius: 20px;
-        box-shadow: 0 0 10px 10px black;
         width: 80vw;
         height: 50vw;
     }
@@ -856,7 +788,12 @@ iframe {
     .slide_left{
         width: 60px;
         height: 60px;
-        left: -5vw;
+        left: -43px;
+        background-image: url('../Images/app1.png');
+        background-position: center;
+        width: 30px;
+        height: 30px;
+        bottom: 15vh;
     }
 }
 
@@ -886,23 +823,13 @@ iframe {
 
 
 @media screen and (max-width : 550px) {
-    body {
-        background-color: rgb(0, 0, 0);
-    }
-    .header--box1 {
-        display: block;
-    }
 
     .right-cont img {
-        cursor: none;
+        cursor: pointer;
         width: 3vw;
     }
 
-    .header {
-        padding: 3vh 5vw;
-    }
-
-    .left-cont ul {
+    .left-cont ul,.header--box2 {
         display: none;
     }
 
@@ -910,30 +837,13 @@ iframe {
         width: 15vh;
     }
 
-    .header--box2 {
-        display: none;
-    }
-
-    .shop {
-        display: none;
-    }
-
-    .education {
-        display: none;
-    }
-
     .category img {
         width: 22vw;
         height: 35vw;
     }
 
-    .main_category {
-        padding: 0 1.5vw;
-    }
-
     .category img:hover {
         transform: none;
-        cursor: none;
     }
 
     .redinfo{
@@ -946,12 +856,6 @@ iframe {
     }
     .redinfo div:nth-child(2) {
         display: none;
-    }
-    iframe {
-        background: transparent;
-        border: none;
-        border-radius: 20px;
-        box-shadow: 0 0 10px 10px black;
     }
 
     .trailer11 {

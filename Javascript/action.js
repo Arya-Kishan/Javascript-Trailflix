@@ -16,21 +16,23 @@ let trailer_main = document.querySelector(".trailer_main")
 let trailer = document.querySelector(".trailer")
 let bellclose = document.querySelector(".bellclose")
 let bellopen = document.querySelector(".bellopen")
+let heading = document.querySelector(".heading")
 let profile = document.querySelectorAll(".profile")
 let movie_namelist = ""
 const handleRoute = (id)=>{
     localStorage.setItem('route',id)
 }
-const route_id = localStorage.getItem('route')
+let route_id = localStorage.getItem('route')
+route_id = JSON.parse(route_id)
+heading.innerHTML = route_id.name.toUpperCase()
 const fetch_movies = async () => {
     trailer_main.style.display = "none"
     info_main.style.display = "none"
     less.style.display = "none"
     bellclose.style.display = "none"
 
-    let response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=7fad363f58889077cd601fe2d0ed4fb7&with_genres=${route_id}`)
+    let response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=7fad363f58889077cd601fe2d0ed4fb7&with_genres=${route_id.id}`)
     response = await response.json()
-    console.log(response.results)
     movie_namelist = response.results;
     let names = response.results.map((e) => {
         return `<div class="action_box" id="${e.original_title}">
@@ -74,7 +76,6 @@ const handleInfo = () => {
 // ADDING YOUTUBE TRAILER--------------------------------------------------------
 
 const handleVideo = (e) => {
-    console.log(e.parentElement.parentElement)
     e.parentElement.parentElement.innerHTML = ""
     trailer_main.style.display = "none"
 }
@@ -136,7 +137,6 @@ const handleLessCategory = () => {
     less.style.display = "none"
     more.style.display = "block"
 }
-console.log(screen.width)
 
 if (screen.width < 550) {
     ul.style.display = "none"
