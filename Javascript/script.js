@@ -43,7 +43,7 @@ let genre_id = [];
 const first_fetch = async () => {
     let category = await fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=7fad363f58889077cd601fe2d0ed4fb7")
     category = await category.json()
-    category = (category.genres).slice(0,3)
+    category = (category.genres)
     category.forEach(element => {
         category_movies(element.name, element.id)
         genre_id.push({ name: element.name, id: element.id })
