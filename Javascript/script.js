@@ -43,7 +43,7 @@ let genre_id = [];
 const first_fetch = async () => {
     let category = await fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=7fad363f58889077cd601fe2d0ed4fb7")
     category = await category.json()
-    category = (category.genres)
+    category = (category.genres).slice(0,3)
     category.forEach(element => {
         category_movies(element.name, element.id)
         genre_id.push({ name: element.name, id: element.id })
@@ -64,25 +64,6 @@ const enlarge = (ab) => {
     ab.style.display = "none"
 }
 
-// RESPONSE ON CLICK ON IMAGE --------------------------------------------------
-const mov_name = async (movie_name) => {
-    console.log("hihi")
-    // movie_trailer.style.display = "block"
-
-    // let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${movie_name}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
-    // response = await response.json()
-
-    // let videoID = response.items[0].id.videoId
-    // movie_trailer.innerHTML = `<div class="trailer11">
-    //                <iframe width="100%" height="80%"
-    //                      src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1">
-    //                 </iframe> 
-    //                 <div class="movie_trailer_btn">
-    //                   <button onclick="enlarge(this)" class="close_btn">ENLARGE</button>
-    //                   <button onclick="hide_trailer()" class="close_btn">CLOSE</button>
-    //                 </div>
-    //                           </div>`
-}
 
 // FETCHING MOVIES IMAGES AND ADDING TO WEBPAGE------------------------------------------
 const category_movies = async (name, id) => {
@@ -93,9 +74,8 @@ const category_movies = async (name, id) => {
     let path = arr1.map(element => {
         return (`<div class="movie_token">
             <div id="${element.original_title}">
-               <img class="movie_img" onmouseover="mov_name(this.alt)" src=https://image.tmdb.org/t/p/w500${element.poster_path} alt="${element.original_title}" srcset="">
+               <img class="movie_img" data-name='${element.original_title}' data-imdb=${element.vote_average} data-date=${element.release_date} data-poster=${element.backdrop_path} data-description='${element.overview}' data-language=${element.original_language} title='${element.title}' onclick="handleInfoLetter(this)" src=https://image.tmdb.org/t/p/w500${element.poster_path} alt="${element.original_title}" srcset="">
             </div>
-            <div><span>${element.original_title}</span><span data-name='${element.original_title}' data-imdb=${element.vote_average} data-date=${element.release_date} data-poster=${element.backdrop_path} data-description='${element.overview}' data-language=${element.original_language} title='${element.title}' onclick="handleInfoLetter(this)">i</span></div>
          </div>`)
     }).join(" ");
 
@@ -187,7 +167,6 @@ window.addEventListener("load", () => {
 
 
 const handleRoute = (id) => {
-    console.log(id)
     localStorage.setItem('route', id)
 }
 // ADDING NAME TO TAP SLIDE AND SHOW LEFT
@@ -236,7 +215,7 @@ const handleBellClose = () => {
 }
 
 const handleCatch = () => {
-    console.log("hii")
+    e.stopPropagation()
     if (tap_main.className == "tap_main") {
         tap_main.className = "tap_main2"
     } else {
@@ -251,6 +230,7 @@ const handleRedInfo = () => {
 const handleVideo = () => {
     redtrailer.innerHTML = ""
     redtrailer.style.display = "none"
+    main_body.style.filter = "blur(0)"
 }
 
 let redinfo_moviename = "";
@@ -260,15 +240,14 @@ const handleRedPlay = async () => {
 
     redtrailer.style.display = "block"
     redinfo_main.style.display = "none"
+    main_body.style.filter = "blur(4px)"
 
     let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${redinfo_moviename}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
     response = await response.json()
 
     let videoID = response.items[0].id.videoId
 
-    redtrailer.innerHTML = `<div><iframe width="560" height="315" src="https://www.youtube.com/embed/rp1aU3SileM" autoplay></iframe></div><div><button onclick="handleVideo(this)">Close</button></div>`
-
-    // redtrailer.innerHTML = `<div><iframe class="header_video_trailer" width="100%" height="80%"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1"></iframe></div><div><button onclick="handleVideo(this)">Close</button></div>`
+    redtrailer.innerHTML = `<div><iframe class="header_video_trailer" width="560" height="315"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1&rel=0&showinfo=0"></iframe></div><div><button onclick="handleVideo(this)">Close</button></div>`
 }
 
 const handleInfoLetter = (a) => {
@@ -284,9 +263,6 @@ const handleInfoLetter = (a) => {
 }
 
 
-console.log(screen.width)
-
-
 let div = document.createElement('div')
 div.innerHTML = `<div class="header_video">
     <video loop muted autoplay="autoplay">
@@ -299,3 +275,32 @@ header.append(div)
 if (screen.width < 1200) {
     header
 }
+
+
+
+let nav = document.querySelector(".navbar")
+window.onscroll = function (e) {
+    if (window.scrollY > 250) {
+        nav.style.visibility = "hidden"
+    }
+    else{
+        nav.style.visibility = "visible"
+
+    }
+};
+
+
+tap.addEventListener("click",(e)=>{
+    if (tap_main.className == "tap_main") {
+        tap_main.className = "tap_main2"
+    } else {
+        tap_main.className = "tap_main"
+    }
+})
+
+select.addEventListener("click",(e)=>{
+    bellclose.style.display = "none"
+    bellopen.style.display = "block"
+    select.style.transition = "all .5s ease"
+    select.style.transform = "translateX(-100%)"
+})
