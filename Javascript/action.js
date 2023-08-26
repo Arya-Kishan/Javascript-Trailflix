@@ -19,10 +19,13 @@ let bellopen = document.querySelector(".bellopen")
 let heading = document.querySelector(".heading")
 let profile = document.querySelectorAll(".profile")
 let movie_namelist = ""
-const handleRoute = (id)=>{
-    localStorage.setItem('route',id)
+const anchorRoute = (b)=>{
+    let obj = { 'id': b.dataset.id, 'name': b.dataset.name }
+    obj = JSON.stringify(obj)
+    localStorage.setItem('route', obj)
 }
 let route_id = localStorage.getItem('route')
+console.log(route_id)
 route_id = JSON.parse(route_id)
 heading.innerHTML = route_id.name.toUpperCase()
 const fetch_movies = async () => {

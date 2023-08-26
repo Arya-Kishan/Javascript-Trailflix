@@ -22,11 +22,11 @@
                 <ul class="ul slide">
                     <ul>
                         <li class="links"><a href="index.html">Home</a></li>
-                        <li onclick="handleRoute(28)" class="links"><a href="action.html">Action</a></li>
-                        <li onclick="handleRoute(12)" class="links"><a href="action.html">Adventure</a></li>
-                        <li onclick="handleRoute(9648)" class="links"><a href="action.html">Mystery</a></li>
-                        <li onclick="handleRoute(14)" class="links"><a href="action.html">Fantasy</a></li>
-                        <li onclick="handleRoute(27)" class="links"><a href="action.html">Horror</a></li>
+                        <li onclick="anchorRoute(this)" data-id="28" data-name="Action" class="links"><a href="action.html">Action</a></li>
+                        <li onclick="anchorRoute(this)" data-id="12" data-name="Adventure" class="links"><a href="action.html">Adventure</a></li>
+                        <li onclick="anchorRoute(this)" data-id="29648" data-name="Mystery" class="links"><a href="action.html">Mystery</a></li>
+                        <li onclick="anchorRoute(this)" data-id="14" data-name="Fantasy" class="links"><a href="action.html">Fantasy</a></li>
+                        <li onclick="anchorRoute(this)" data-id="27" data-name="Horror" class="links"><a href="action.html">Horror</a></li>
 
                     </ul>
                 </ul>
@@ -157,3 +157,14 @@
 </body>
 
 </html>
+
+
+
+
+<!-- POPULAR :  https://api.themoviedb.org/3/movie/popular?api_key=7fad363f58889077cd601fe2d0ed4fb7 -->
+
+<!-- NOW PLAYING :  https://api.themoviedb.org/3/movie/top_rated?api_key=7fad363f58889077cd601fe2d0ed4fb7 -->
+
+<!-- https://api.themoviedb.org/3/movie/now_playing?api_key=7fad363f58889077cd601fe2d0ed4fb7 -->
+
+<!-- https://api.themoviedb.org/3/movie/upcoming?api_key=7fad363f58889077cd601fe2d0ed4fb7 -->

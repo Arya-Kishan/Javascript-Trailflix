@@ -39,6 +39,24 @@ redinfo_main.style.display = "none"
 redtrailer.style.display = "none"
 let genre_id = [];
 
+
+
+// WINDOW BACK BUTTON
+window.onpopstate = function(event) {
+    if (select.style.display = 'block') {
+        bellopen.style.display = "block"
+        bellclose.style.display = "none"
+        select.style.transition = "all .5s ease"
+        select.style.transform = "translateX(-100%)"
+    }
+
+    if (tap_main.className == "tap_main2") {
+        tap_main.className = "tap_main"
+    } 
+}
+// window.history.pushState({page: 1}, "", "");
+
+
 // FETCHING THE INITIAL DATA---------------------------------------
 const first_fetch = async () => {
     let category = await fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=7fad363f58889077cd601fe2d0ed4fb7")
@@ -167,12 +185,14 @@ window.addEventListener("load", () => {
 
 
 const handleRoute = (a) => {
-    console.log(a)
-    console.log(a.dataset.id)
-    console.log(a.innerText)
     let obj = { 'id': a.dataset.id, 'name': a.innerText }
     obj = JSON.stringify(obj)
-    console.log(obj)
+    localStorage.setItem('route', obj)
+}
+
+const anchorRoute = (b) => {
+    let obj = { 'id': b.dataset.id, 'name': b.dataset.name }
+    obj = JSON.stringify(obj)
     localStorage.setItem('route', obj)
 }
 
@@ -205,6 +225,7 @@ const Movies_ID = async (category) => {
 // TO MAKE BELL
 bellclose.style.display = "none"
 const handleBellOpen = () => {
+    window.history.pushState({page: 1}, "", "")
     bellopen.style.display = "none"
     bellclose.style.display = "block"
     select.style.display = "block"
@@ -223,6 +244,7 @@ const handleBellClose = () => {
 }
 
 const handleCatch = () => {
+    window.history.pushState({page: 1}, "", "");
     e.stopPropagation()
     if (tap_main.className == "tap_main") {
         tap_main.className = "tap_main2"
@@ -280,20 +302,16 @@ div.innerHTML = `<div class="header_video">
 </div>`
 header.append(div)
 
-if (screen.width < 1200) {
-    header
-}
-
 
 
 let nav = document.querySelector(".navbar")
 window.onscroll = function (e) {
     if (window.scrollY > 250) {
-        nav.style.visibility = "hidden"
+        nav.style.zIndex = 5
+        nav.style.backgroundColor = 'black'
     }
     else {
-        nav.style.visibility = "visible"
-
+        nav.style.backgroundColor = 'transparent'
     }
 };
 
@@ -312,3 +330,4 @@ select.addEventListener("click", (e) => {
     select.style.transition = "all .5s ease"
     select.style.transform = "translateX(-100%)"
 })
+
