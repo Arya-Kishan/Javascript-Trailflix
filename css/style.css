@@ -6,7 +6,8 @@
     scroll-behavior: smooth;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-a{
+
+a {
     text-decoration: none;
     color: white;
     cursor: pointer;
@@ -205,6 +206,7 @@ nav {
     height: 2vw;
 }
 
+
 .trail_logo {
     display: flex;
     flex-direction: row;
@@ -345,6 +347,7 @@ iframe {
 
 
 
+
 footer {
     background-color: rgb(0, 0, 0);
     padding: 0 5vw;
@@ -362,9 +365,6 @@ footer {
 
 
 /* -------------------------VIDEO------------------------- */
-.header_video_trailer {
-    position: fixed;
-}
 
 video {
     position: absolute;
@@ -449,6 +449,7 @@ video {
     width: 100%;
 }
 
+
 /* -------------------GIF-------------------- */
 
 .gif {
@@ -506,7 +507,8 @@ video {
     justify-content: flex-end;
     align-items: center;
 }
-.select_btn button{
+
+.select_btn button {
     padding: 10px;
 }
 
@@ -521,10 +523,12 @@ video {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
-.select_each span{
+
+.select_each span {
     width: 100%;
     padding: 10px;
 }
+
 .select_each a {
     border: 2px solid rgb(255, 255, 255);
     display: grid;
@@ -581,7 +585,7 @@ video {
 .redinfo {
     border-radius: 20px;
     box-shadow: 0 0 8px 8px white;
-    background: linear-gradient(black,red,black);
+    background-color: black;
     min-height: 70vh;
     width: 70vw;
     display: flex;
@@ -611,6 +615,7 @@ video {
     justify-content: center;
     align-items: center;
 }
+
 .redinfo div:nth-child(2) {
     justify-content: space-around;
 }
@@ -622,6 +627,7 @@ video {
 .redinfo div:nth-child(6) {
     justify-content: space-around;
 }
+
 /* --------------TRAILER--------------- */
 .redtrailer {
     display: flex;
@@ -646,6 +652,17 @@ iframe {
     width: 100%;
 }
 
+swiper-container {
+    display: none;
+}
+
+.infoAutoTrailer {
+    display: none;
+}
+
+.infoAutoTrailer iframe {
+    display: none;
+}
 
 
 
@@ -754,7 +771,7 @@ iframe {
     }
 
     .tap {
-        background: linear-gradient(black,transparent);
+        background: linear-gradient(black, transparent);
     }
 
     ul li:nth-child(5) {
@@ -780,10 +797,11 @@ iframe {
 
         grid-template-columns: repeat(3, 1fr);
     }
-    .slide_left{
+
+    .slide_left {
         width: 60px;
         height: 60px;
-        left: -30px;
+        left: -35px;
         border: none;
         background-image: url('../Images/app1.png');
         background-position: center;
@@ -822,12 +840,29 @@ iframe {
 
 @media screen and (max-width : 550px) {
 
+    .infoAutoTrailer {
+        width: 100vw;
+        aspect-ratio: 16/9;
+    }
+
+    .infoAutoTrailer iframe {
+        display: block;
+        width: 100vw;
+        border-radius: none;
+        box-shadow: none;
+    }
+
+    swiper-container {
+        display: block;
+    }
+
     .right-cont img {
         cursor: pointer;
         width: 3vw;
     }
 
-    .left-cont ul,.header--box2 {
+    .left-cont ul,
+    .header--box2 {
         display: none;
     }
 
@@ -844,14 +879,17 @@ iframe {
         transform: none;
     }
 
-    .redinfo{
+    .redinfo {
+        border-radius: 0;
         width: 100vw;
         height: 100vh;
     }
-    .redinfo_img img{
+
+    .redinfo_img img {
         width: 90%;
         height: 100%;
     }
+
     .redinfo div:nth-child(2) {
         display: none;
     }
@@ -914,6 +952,7 @@ iframe {
         transition: all ease 1s;
         transform: translateX(100%);
     }
+
     .tap {
         width: 40vw;
 
@@ -922,7 +961,8 @@ iframe {
     .select_each div:nth-child(2) {
         grid-template-columns: repeat(2, 1fr);
     }
-    .select_each{
+
+    .select_each {
         background: linear-gradient(black, transparent, black);
     }
 
@@ -954,16 +994,18 @@ iframe {
 
 
 @media screen and (max-width : 1200px) {
-    .video_shadow{
+    .video_shadow {
         justify-content: flex-start;
         align-items: flex-end;
     }
+
     .video_shadow h1 {
         display: block;
         font-size: 20px;
         margin: 1vh;
         opacity: .3;
     }
+
     .header {
         width: 100vw;
         aspect-ratio: 16/9;
@@ -999,7 +1041,7 @@ iframe {
 
 
 
-.last{
+.last {
     height: 20px;
     width: 20px;
     background-color: yellow;
@@ -1007,4 +1049,28 @@ iframe {
     position: fixed;
     bottom: 0;
     right: 0;
+}
+
+
+
+swiper-container {
+    width: 100vw;
+    height: 20vh;
+    padding: 10px;
+}
+
+swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

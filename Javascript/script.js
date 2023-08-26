@@ -33,6 +33,7 @@ let redtrailer = document.querySelector(".redtrailer")
 let redinfo_language = document.querySelector(".redinfo_language")
 let redinfo_img = document.querySelector(".redinfo_img")
 let movie_img = document.querySelectorAll(".movie_img")
+let infoAutoTrailer = document.querySelector('.infoAutoTrailer')
 
 select.style.display = "none"
 redinfo_main.style.display = "none"
@@ -53,6 +54,12 @@ window.onpopstate = function(event) {
     if (tap_main.className == "tap_main2") {
         tap_main.className = "tap_main"
     } 
+
+    if (redinfo_main.style.display = "block") {
+        redinfo_main.style.display = "none"
+    }
+
+    infoAutoTrailer.innerHTML = ''
 }
 // window.history.pushState({page: 1}, "", "");
 
@@ -88,6 +95,7 @@ const category_movies = async (name, id) => {
     let movies = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=7fad363f58889077cd601fe2d0ed4fb7&with_genres=${id}`)
     movies = await movies.json()
     let arr1 = movies.results
+    
 
     let path = arr1.map(element => {
         return (`<div class="movie_token">
@@ -253,9 +261,6 @@ const handleCatch = () => {
     }
 }
 
-const handleRedInfo = () => {
-    redinfo_main.style.display = "none"
-}
 
 const handleVideo = () => {
     redtrailer.innerHTML = ""
@@ -265,22 +270,10 @@ const handleVideo = () => {
 
 let redinfo_moviename = "";
 
-const handleRedPlay = async () => {
-
-
-    redtrailer.style.display = "block"
-    redinfo_main.style.display = "none"
-    main_body.style.filter = "blur(4px)"
-
-    let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${redinfo_moviename}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
-    response = await response.json()
-
-    let videoID = response.items[0].id.videoId
-
-    redtrailer.innerHTML = `<div><iframe class="header_video_trailer" width="560" height="315"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1&rel=0&showinfo=0"></iframe></div><div><button onclick="handleVideo(this)">Close</button></div>`
-}
-
 const handleInfoLetter = (a) => {
+    let navbar = document.querySelector('.navbar')
+    navbar.style.display = 'none'
+    window.history.pushState({id:1},"","")
     redinfo_main.style.display = "block"
     redinfo_name.innerHTML = (a.dataset.name)
     redinfo_imdb.innerHTML = (a.dataset.imdb)
@@ -290,6 +283,20 @@ const handleInfoLetter = (a) => {
     redinfo_date.innerHTML = (a.dataset.date)
     redinfo_img.innerHTML = `<img src=https://image.tmdb.org/t/p/w500${a.dataset.poster} alt="">`
     redinfo_moviename = a.dataset.name
+
+    const abcd = async()=>{
+        let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${a.dataset.name}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
+    response = await response.json()
+
+    let videoID = response.items[0].id.videoId
+
+    infoAutoTrailer.innerHTML = `<div><iframe class="header_video_trailer" width="560" height="315"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1&rel=0&showinfo=0"></iframe></div><div><button onclick="handleVideo(this)">Close</button></div>`
+
+
+
+    }
+    abcd()
+    
 }
 
 
@@ -306,8 +313,12 @@ header.append(div)
 
 let nav = document.querySelector(".navbar")
 window.onscroll = function (e) {
-    if (window.scrollY > 250) {
+    if (window.scrollY > 10) {
         nav.style.zIndex = 5
+        nav.style.position = 'fixed'
+        nav.style.left = '0'
+        nav.style.top = '0'
+        nav.style.width = '100vw'
         nav.style.backgroundColor = 'black'
     }
     else {
