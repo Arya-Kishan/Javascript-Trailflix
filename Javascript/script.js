@@ -134,11 +134,10 @@ const pause_func = () => {
 const header_trailer = async () => {
     pausebtn.style.display = "block"
     playbtn.style.display = "none"
-    // let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${header_trailer_name}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
-    // response = await response.json()
-    // let videoID = response.items[0].id.videoId
-    // header_box2.innerHTML = `<iframe class="header_video_trailer" width="100%" height="80%"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1"></iframe>`
-    header_box2.innerHTML = `<iframe width="100%" height="80%" src="https://www.youtube.com/embed/rp1aU3SileM?si=i5pJvSevhcyI-Bma" ></iframe>`
+    let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${header_trailer_name}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
+    response = await response.json()
+    let videoID = response.items[0].id.videoId
+    header_box2.innerHTML = `<iframe class="header_video_trailer" width="100%" height="80%"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1"></iframe>`
 }
 
 
@@ -233,7 +232,7 @@ const handleInfoClose = ()=>{
     history.back()
 }
 
-const handleInfoLetter = (a) => {
+const handleInfoLetter = async(a) => {
     redinfo.style.display = 'flex'
     navbar.style.display = 'none'
     redinfo_main.style.display = "flex"
@@ -248,16 +247,12 @@ const handleInfoLetter = (a) => {
     redinfo_img.innerHTML = `<img src=https://image.tmdb.org/t/p/w500${a.dataset.poster} alt="">`
     redinfo_moviename = a.dataset.name
 
-    //     let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${a.dataset.name}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
-    // response = await response.json()
+        let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${a.dataset.name}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
+    response = await response.json()
 
-    // let videoID = response.items[0].id.videoId
+    let videoID = response.items[0].id.videoId
 
-    // infoAutoTrailer.innerHTML = `<div><iframe class="header_video_trailer info_video_trailer" width="560" height="315"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1&rel=0&showinfo=0"></iframe></div>`
-
-    infoAutoTrailer.innerHTML = `<iframe width="100%" height="80%" src="https://www.youtube.com/embed/rp1aU3SileM?si=i5pJvSevhcyI-Bma" ></iframe>`
-
-    
+    infoAutoTrailer.innerHTML = `<div><iframe class="header_video_trailer info_video_trailer" width="560" height="315"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1&rel=0&showinfo=0"></iframe></div>`
 }
 
 
