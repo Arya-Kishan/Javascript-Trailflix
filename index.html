@@ -13,42 +13,43 @@
     <section class="main_body">
         <nav class="navbar">
             <div class="left-cont">
-
                 <div class="logo">
                     <img src="./Images/Logo2.png" alt="" srcset="">
                     <img class="profile" src="./Images//profile.png" alt="" srcset="">
                 </div>
-
                 <ul class="ul slide">
                     <ul>
                         <li class="links"><a href="index.html">Home</a></li>
-                        <li onclick="anchorRoute(this)" data-id="28" data-name="Action" class="links"><a href="action.html">Action</a></li>
-                        <li onclick="anchorRoute(this)" data-id="12" data-name="Adventure" class="links"><a href="action.html">Adventure</a></li>
-                        <li onclick="anchorRoute(this)" data-id="29648" data-name="Mystery" class="links"><a href="action.html">Mystery</a></li>
-                        <li onclick="anchorRoute(this)" data-id="14" data-name="Fantasy" class="links"><a href="action.html">Fantasy</a></li>
-                        <li onclick="anchorRoute(this)" data-id="27" data-name="Horror" class="links"><a href="action.html">Horror</a></li>
-
+                        <li onclick="anchorRoute(this)" data-id="28" data-name="Action" class="links"><a
+                                href="action.html">Action</a></li>
+                        <li onclick="anchorRoute(this)" data-id="12" data-name="Adventure" class="links"><a
+                                href="action.html">Adventure</a></li>
+                        <li onclick="anchorRoute(this)" data-id="29648" data-name="Mystery" class="links"><a
+                                href="action.html">Mystery</a></li>
+                        <li onclick="anchorRoute(this)" data-id="14" data-name="Fantasy" class="links"><a
+                                href="action.html">Fantasy</a></li>
+                        <li onclick="anchorRoute(this)" data-id="27" data-name="Horror" class="links"><a
+                                href="action.html">Horror</a></li>
                     </ul>
                 </ul>
             </div>
-            <div class="right-cont">
 
+            <div class="right-cont">
                 <div class="bellclose">
                     <div onclick="handleBellClose(this)"><img src="./Images/bell1.png" alt=""></div>
                 </div>
-
                 <div class="bellopen">
                     <div onclick="handleBellOpen(this)"><img src="./Images/list.png" alt=""></div>
                 </div>
-
                 <div>
                     <a href="index.html"><img src="./Images/home1.png" alt=""></a>
                 </div>
-
                 <div>
                     <div class="profile"><a href="form.html"><img src="./Images/profile.png" alt=""></a></div>
                 </div>
-
+                <div>
+                    <div onclick="handleCatch(this)" class="profile"><img src="Images/app1.png" alt="" srcset=""></div>
+                </div>
             </div>
         </nav>
 
@@ -58,7 +59,6 @@
             <section class="header">
                 <div class="header--box1">
                     <div class="header1_textbox">
-                        <span class="trail_logo"><img src="./Images/Tlogo.jpeg" alt="" srcset="">TRAILFLIX</span>
                         <h1 class="movie_name">THE FLASH</h1>
                         <div class="introduction">
                             <span>#1 TV Shows Today</span>
@@ -68,15 +68,11 @@
                                 porro.</span>
                             <div class="btn_bg">
                                 <button onclick="header_trailer()" class="btn playbtn">
-                                    <div><img class="btn_img" src="./Images/play.png" alt="" srcset=""><span>Play</span>
-                                    </div>
+                                    <div><img class="btn_img" src="./Images/play.png" alt="" srcset="">
+                                    </div>Play
                                 </button>
                                 <button onclick="pause_func()" class="btn pausebtn">
-                                    <div><img class="btn_img" src="./Images/pause.png" alt=""
-                                            srcset=""><span>Close</span></div>
-                                </button>
-                                <button class="btn info_btn">
-                                    <img class="btn_img" src="./Images/info.png" alt="" srcset=""><span>More Info</span>
+                                    <div><img class="btn_img" src="./Images/pause.png" alt="" srcset=""></div>Pause
                                 </button>
                             </div>
                         </div>
@@ -100,13 +96,6 @@
     <section class="movie_trailer"></section>
 
     <div class="error_pop"><img src="./Images/sorry2.png" alt="" srcset=""></div>
-    <div class="movie_info"></div>
-
-    <div class="gif"><span class="gif_span">WELCOME TO <b>TRAILFLIX</b> <br>WHERE YOU WILL FIND <br> <b> TRAILER</b> OF
-            LATEST POPULAR
-            MOVIES</span>
-        <div><img src="./Images/anime.gif" alt=""></div>
-    </div>
 
     <div class="select_main">
         <div class="select">
@@ -117,37 +106,32 @@
     </div>
 
     <div class="tap_main">
-        <div class="tap">
-            <div onclick="handleCatch(this)" class="slide_left"></div>
-        </div>
+        <div class="tap"></div>
     </div>
-    
+
     <div class="redinfo_main">
         <div class="redinfo">
-
             <div class="infoAutoTrailer"></div>
-
             <h1 class="redinfo_name">TITLE NAME</h1>
-
             <div>
                 <span>Language : <span class="redinfo_language">language</span></span>
                 <span>Title : <span class="redinfo_originaltitle">ORIGINAL TITLE</span></span>
             </div>
-
             <div class="redinfo_img"></div>
-
             <div>
                 <span>Description : <P class="redinfo_description">Lorem ipsum dolor sit, amet consectetur adipisicing
                         elit. Earum ipsa mollitia
                         quo
                         eaque quisquam hic.</P></span>
             </div>
-
             <div>
                 <span>IMDB : <span class="redinfo_imdb">6.6</span></span>
                 <span>Date : <span class="redinfo_date">20-20-20</span></span>
             </div>
-
+            <div>
+                <button class="infoplaybtn" onclick="handleInfoPlay()">Play</button>
+                <button class="infoclosebtn" onclick="handleInfoClose()">Close</button>
+            </div>
         </div>
     </div>
 
@@ -155,19 +139,6 @@
         <div class="redtrailer"></div>
     </div>
 
-    
-
 </body>
 
 </html>
-
-
-
-
-<!-- POPULAR :  https://api.themoviedb.org/3/movie/popular?api_key=7fad363f58889077cd601fe2d0ed4fb7 -->
-
-<!-- NOW PLAYING :  https://api.themoviedb.org/3/movie/top_rated?api_key=7fad363f58889077cd601fe2d0ed4fb7 -->
-
-<!-- https://api.themoviedb.org/3/movie/now_playing?api_key=7fad363f58889077cd601fe2d0ed4fb7 -->
-
-<!-- https://api.themoviedb.org/3/movie/upcoming?api_key=7fad363f58889077cd601fe2d0ed4fb7 -->

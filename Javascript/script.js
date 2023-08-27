@@ -9,18 +9,12 @@ let movie_trailer = document.querySelector(".movie_trailer")
 let main_body = document.querySelector(".main_body")
 let playbtn = document.querySelector(".playbtn")
 let pausebtn = document.querySelector(".pausebtn")
-let info_btn = document.querySelector(".info_btn")
-let error_pop = document.querySelector(".error_pop")
-let movie_info = document.querySelector(".movie_info")
-let gif = document.querySelector(".gif")
-let gif_span = document.querySelector(".gif_span")
 let select = document.querySelector(".select")
 let bellopen = document.querySelector(".bellopen")
 let bellclose = document.querySelector(".bellclose")
 let tap_main = document.querySelector(".tap_main")
 let tap = document.querySelector(".tap")
 let slide_left = document.querySelector(".slide_left")
-let gif_select_heading = document.querySelector(".gif_select_heading")
 let redinfo_main = document.querySelector(".redinfo_main")
 let redinfo = document.querySelector(".redinfo")
 let redinfo_name = document.querySelector(".redinfo_name")
@@ -34,6 +28,7 @@ let redinfo_language = document.querySelector(".redinfo_language")
 let redinfo_img = document.querySelector(".redinfo_img")
 let movie_img = document.querySelectorAll(".movie_img")
 let infoAutoTrailer = document.querySelector('.infoAutoTrailer')
+let navbar = document.querySelector('.navbar')
 
 select.style.display = "none"
 redinfo_main.style.display = "none"
@@ -60,8 +55,15 @@ window.onpopstate = function(event) {
     }
 
     infoAutoTrailer.innerHTML = ''
+
+    navbar.style.display = 'flex'
 }
-// window.history.pushState({page: 1}, "", "");
+
+
+
+
+
+
 
 
 // FETCHING THE INITIAL DATA---------------------------------------
@@ -76,29 +78,16 @@ const first_fetch = async () => {
     Movies_ID(genre_id)
 }
 
-const hide_trailer = () => {
-    movie_trailer.innerHTML = ""
-    movie_trailer.style.display = "none"
-    main_body.style.filter = "blur(0)"
-}
-
-const enlarge = (ab) => {
-    let div_trailer = ab.parentElement.parentElement
-    div_trailer.className = "trailer_enlarge"
-    main_body.style.filter = "blur(10px)"
-    ab.style.display = "none"
-}
-
 
 // FETCHING MOVIES IMAGES AND ADDING TO WEBPAGE------------------------------------------
 const category_movies = async (name, id) => {
     let movies = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=7fad363f58889077cd601fe2d0ed4fb7&with_genres=${id}`)
     movies = await movies.json()
-    let arr1 = movies.results
+    let arr1 = movies.results   
     
-
+    
     let path = arr1.map(element => {
-        return (`<div class="movie_token">
+        return (`<div>
             <div id="${element.original_title}">
                <img class="movie_img" data-name='${element.original_title}' data-imdb=${element.vote_average} data-date=${element.release_date} data-poster=${element.backdrop_path} data-description='${element.overview}' data-language=${element.original_language} title='${element.title}' onclick="handleInfoLetter(this)" src=https://image.tmdb.org/t/p/w500${element.poster_path} alt="${element.original_title}" srcset="">
             </div>
@@ -130,18 +119,7 @@ const hero_section = async () => {
 
     let num = Math.floor(Math.random() * hero.length)
 
-    language = hero[num].original_language;
-    title = hero[num].original_title;
-    imdb = hero[num].vote_average
-    title_movie = hero[num].title
-    released_date = hero[num].release_date
-    overview = hero[num].overview
-
-    movie_name.innerHTML = hero[num].original_title
-    header_trailer_name = hero[num].original_title
     header_box2.innerHTML = `<img src="https://image.tmdb.org/t/p/w500${hero[num].backdrop_path}">`
-
-    movie_description.innerHTML = (hero[num].overview)
 
     image_url = `<img src="https://image.tmdb.org/t/p/w500${hero[num].backdrop_path}">`;
 }
@@ -156,43 +134,24 @@ const pause_func = () => {
 const header_trailer = async () => {
     pausebtn.style.display = "block"
     playbtn.style.display = "none"
-    let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${header_trailer_name}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
-    response = await response.json()
-    let videoID = response.items[0].id.videoId
-    header_box2.innerHTML = `<iframe class="header_video_trailer" width="100%" height="80%"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1"></iframe>`
+    // let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${header_trailer_name}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
+    // response = await response.json()
+    // let videoID = response.items[0].id.videoId
+    // header_box2.innerHTML = `<iframe class="header_video_trailer" width="100%" height="80%"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1"></iframe>`
+    header_box2.innerHTML = `<iframe width="100%" height="80%" src="https://www.youtube.com/embed/rp1aU3SileM?si=i5pJvSevhcyI-Bma" ></iframe>`
 }
 
-const info_close = (this_obj) => {
-    main_body.style.pointerEvents = "all"
-    main_body.style.filter = "blur(0)"
-    this_obj.parentElement.parentElement.parentElement.style.display = "none"
-}
-info_btn.addEventListener("click", () => {
-    main_body.style.pointerEvents = "none"
-    main_body.style.filter = "blur(20px)"
-    movie_info.style.display = "block"
-    movie_info.innerHTML = `<div class="info"><div class="info_heading">${title}</div>
-    <div class="info_child1"><span>Language : ${language}</span><span>Title : ${title_movie}</span></div>
-    <div>Description : \n ${overview}</div>
-    <div class="info_child2"><span>IMDB : ${imdb}</span><span>Released Date : ${released_date}</span></div><div><button onclick="info_close(this)">CLOSE</button></div></div>`
-})
 
 
 window.addEventListener("load", () => {
     movie_trailer.style.display = "none"
     first_fetch();
     hero_section()
-
-    setTimeout(() => {
-        gif.style.transition = "all 2s ease-in"
-        gif.style.left = "-100%"
-    }, 5000);
-    gif.style.transition = "all 3s ease-in"
-    gif.style.bottom = "0"
 })
 
 
 const handleRoute = (a) => {
+    history.back()
     let obj = { 'id': a.dataset.id, 'name': a.innerText }
     obj = JSON.stringify(obj)
     localStorage.setItem('route', obj)
@@ -228,53 +187,58 @@ const Movies_ID = async (category) => {
 
     })
 }
-// href="#${e.original_title}"
 
-// TO MAKE BELL
 bellclose.style.display = "none"
 const handleBellOpen = () => {
     window.history.pushState({page: 1}, "", "")
+    navbar.style.display = 'none'
     bellopen.style.display = "none"
     bellclose.style.display = "block"
     select.style.display = "block"
     select.style.transition = "all .5s ease"
     select.style.transform = "translateX(0%)"
 }
+
 const handleBellClose = () => {
+    navbar.style.display = 'flex'
     bellclose.style.display = "none"
     bellopen.style.display = "block"
     select.style.transition = "all .5s ease"
     select.style.transform = "translateX(-100%)"
+    history.back()
     setTimeout(() => {
         select.style.display = "none"
     }, 1000);
-
 }
 
 const handleCatch = () => {
-    window.history.pushState({page: 1}, "", "");
-    e.stopPropagation()
     if (tap_main.className == "tap_main") {
         tap_main.className = "tap_main2"
+        window.history.pushState({page: 1}, "", "");
     } else {
         tap_main.className = "tap_main"
+        history.back()
     }
-}
-
-
-const handleVideo = () => {
-    redtrailer.innerHTML = ""
-    redtrailer.style.display = "none"
-    main_body.style.filter = "blur(0)"
 }
 
 let redinfo_moviename = "";
 
+const handleInfoPlay = ()=>{
+    infoAutoTrailer.style.display = 'flex'
+}
+const handleInfoClose = ()=>{
+    infoAutoTrailer.style.display = 'none'
+    redinfo.style.display = 'none'
+    navbar.style.display = 'flex'
+    history.back()
+}
+
 const handleInfoLetter = (a) => {
-    let navbar = document.querySelector('.navbar')
+    redinfo.style.display = 'flex'
     navbar.style.display = 'none'
+    redinfo_main.style.display = "flex"
     window.history.pushState({id:1},"","")
-    redinfo_main.style.display = "block"
+
     redinfo_name.innerHTML = (a.dataset.name)
     redinfo_imdb.innerHTML = (a.dataset.imdb)
     redinfo_description.innerHTML = (a.dataset.description)
@@ -284,18 +248,15 @@ const handleInfoLetter = (a) => {
     redinfo_img.innerHTML = `<img src=https://image.tmdb.org/t/p/w500${a.dataset.poster} alt="">`
     redinfo_moviename = a.dataset.name
 
-    const abcd = async()=>{
-        let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${a.dataset.name}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
-    response = await response.json()
+    //     let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${a.dataset.name}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
+    // response = await response.json()
 
-    let videoID = response.items[0].id.videoId
+    // let videoID = response.items[0].id.videoId
 
-    infoAutoTrailer.innerHTML = `<div><iframe class="header_video_trailer" width="560" height="315"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1&rel=0&showinfo=0"></iframe></div><div><button onclick="handleVideo(this)">Close</button></div>`
+    // infoAutoTrailer.innerHTML = `<div><iframe class="header_video_trailer info_video_trailer" width="560" height="315"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1&rel=0&showinfo=0"></iframe></div>`
 
+    infoAutoTrailer.innerHTML = `<iframe width="100%" height="80%" src="https://www.youtube.com/embed/rp1aU3SileM?si=i5pJvSevhcyI-Bma" ></iframe>`
 
-
-    }
-    abcd()
     
 }
 
@@ -305,40 +266,29 @@ div.innerHTML = `<div class="header_video">
     <video loop muted autoplay="autoplay">
         <source src="./Images/video.mp4">
     </video>
-    <div class="video_shadow"><h1>MOVIE TRAILER</h1></div>
+    <div class="video_shadow"><h1>ARYA</h1></div>
 </div>`
 header.append(div)
 
 
-
-let nav = document.querySelector(".navbar")
 window.onscroll = function (e) {
-    if (window.scrollY > 10) {
-        nav.style.zIndex = 5
-        nav.style.position = 'fixed'
-        nav.style.left = '0'
-        nav.style.top = '0'
-        nav.style.width = '100vw'
-        nav.style.backgroundColor = 'black'
+    if (window.scrollY > 5) {
+        navbar.style.position = 'fixed'
+        navbar.style.left = '0'
+        navbar.style.top = '0'
+        navbar.style.width = '100vw'
+        navbar.style.backgroundColor = 'black'
     }
     else {
-        nav.style.backgroundColor = 'transparent'
+        navbar.style.backgroundColor = 'transparent'
     }
 };
 
-
-tap.addEventListener("click", (e) => {
-    if (tap_main.className == "tap_main") {
-        tap_main.className = "tap_main2"
-    } else {
-        tap_main.className = "tap_main"
-    }
-})
-
 select.addEventListener("click", (e) => {
+    history.back()
+    navbar.style.display = 'flex'
     bellclose.style.display = "none"
     bellopen.style.display = "block"
     select.style.transition = "all .5s ease"
     select.style.transform = "translateX(-100%)"
 })
-

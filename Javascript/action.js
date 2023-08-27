@@ -83,6 +83,10 @@ const handleVideo = (e) => {
     trailer_main.style.display = "none"
 }
 
+const handleHome = ()=>{
+    history.back()
+}
+
 const handlePlay = async () => {
     info_main.style.display = "none"
     trailer_main.style.display = "block"
@@ -92,13 +96,11 @@ const handlePlay = async () => {
 
     let videoID = response.items[0].id.videoId
     trailer.innerHTML = `<div>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/rp1aU3SileM" autoplay></iframe>
+    <iframe class="header_video_trailer" width="100%" height="80%"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1"></iframe>
     </div>
     <div>
        <button onclick="handleVideo(this)">Close</button>
     </div>`
-
-    // <iframe class="header_video_trailer" width="100%" height="80%"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1"></iframe> 
 }
 
 const handleBell = (a) => {
