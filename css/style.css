@@ -18,14 +18,10 @@ body {
     position: relative;
 }
 
-.main_body {
-    margin: 0 1vw;
-}
-
 button {
     cursor: pointer;
     background-color: red;
-    padding: 1vw;
+    padding: 1vw 2vw;
     border: none;
     border-radius: 10px;
     display: flex;
@@ -105,6 +101,7 @@ nav {
     place-items: center;
     padding: 1vw 5vw;
     width: 100vw;
+    padding-top: calc(100vh - 90vh);
     aspect-ratio: 16/9;
 }
 
@@ -126,10 +123,14 @@ nav {
 }
 
 .header--box2 img {
-    width: 731px;
-    height: 438px;
+    width: 600px;
+    height: 350px;
     border-radius: 20px;
     box-shadow: 0 0 10px 8px black;
+}
+.header iframe{
+    width: 600px;
+    height: 350px;
 }
 
 .introduction {
@@ -147,31 +148,12 @@ nav {
 }
 
 .btn_bg {
-    display: flex;
-    flex-direction: row;
-    width: 90%;
-}
-.btn {
-    background-color: white;
-    color: black;
-    gap: .2vw;
     width: 100%;
 }
-
-.playbtn div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-}
-
-.pausebtn div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+.btn_bg button {
+    background-color: white;
+    gap: .2vw;
+    width: 100%;
 }
 
 /* ------------CATEGORY--------------------------- */
@@ -193,30 +175,22 @@ nav {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    gap: 1vw;
+    gap: 20px;
     padding: 1vw 2vw;
     overflow-x: scroll;
     overflow-y: auto;
-}
-
-.category:hover {
-    background: linear-gradient(transparent, rgb(43, 42, 42), black);
-}
-
-.category_heading {
-    display: flex;
-    flex-direction: column;
 }
 
 .category_headingdiv {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 2.5vw;
+    font-size: 1.5vw;
 }
 
 
 .category img {
+    box-shadow: 0 0 6px 4px white;
     width: 180px;
     height: 250px;
     transition: all .2s ease-in-out;
@@ -266,7 +240,7 @@ video {
     top: 0;
     left: 0;
     z-index: -1;
-    box-shadow: inset 0 0 100vw 15vw black;
+    box-shadow: inset 0 -20vh 10vh black;
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
@@ -290,6 +264,7 @@ video {
     left: 0;
     animation: select .8s ease forwards;
     overflow: scroll;
+    z-index: 12;
 }
 
 @keyframes select {
@@ -375,8 +350,10 @@ video {
     box-shadow: 0 0 10px 7px white;
     background-color: black;
     min-height: 70vh;
-    min-width: 70vw;
+    min-width: 50vw;
     display: flex;
+    gap: 5vh;
+    overflow: scroll;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -388,6 +365,7 @@ video {
 }
 .redinfo_name{
     color: yellow;
+    text-align: center;
 }
 
 .redinfo_img img {
@@ -399,30 +377,28 @@ video {
 .redinfo div {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-}
-
-.redinfo div:nth-child(2) {
-    justify-content: space-around;
-}
-
-.redinfo div:nth-child(5) {
-    justify-content: space-around;
-}
-
-.redinfo div:nth-child(6) {
-    justify-content: space-around;
-}
-.redinfo div:nth-child(7) {
-    justify-content: space-around;
 }
 
 /* --------------TRAILER--------------- */
 
-
-.infoAutoTrailer {
-    display: none;
+.redtrailer{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    height: 80vh;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+}
+.redtrailer button{
+    width: 100%;
 }
 
 iframe {
@@ -430,9 +406,33 @@ iframe {
     height: 30vw;
 }
 
-
-
-
+.gif{
+    position: fixed;
+    top: 1%;
+    right: 4%;
+    background-color: black;
+    border-radius: 10px;
+    padding: 1px;
+    z-index: 11;
+    transition: all ease-in-out .5s;
+}
+.gif img{
+    height: 30px;
+    width: 30px;
+}
+.largegif{
+    position: fixed;
+    top: 30%;
+    right: 20%;
+    background-color: black;
+    border-radius: 10px;
+    padding: 1px;
+    transition: all ease-in-out .5s;
+}
+.largegif img{
+    height: 30vh;
+    width: 30vh;
+}
 
 
 
@@ -497,24 +497,10 @@ iframe {
 
 @media screen and (max-width : 550px) {
 
-    .infoplaybtn,
-    .infoclosebtn,
     .left-cont ul,
     .header--box2,
     .redinfo div:nth-child(2) {
         display: none;
-    }
-
-    .infoAutoTrailer {
-        width: 100vw;
-        aspect-ratio: 16/9;
-    }
-
-    .infoAutoTrailer iframe {
-        display: flex;
-        width: 100vw;
-        border-radius: 0;
-        box-shadow: none;
     }
 
 
@@ -543,7 +529,10 @@ iframe {
     .redinfo {
         border-radius: 0;
         width: 100vw;
-        height: 100vh;
+        height: 80vh;
+    }
+    .redinfo button{
+        padding: 2vh 5vh;
     }
 
     .redinfo_img img {

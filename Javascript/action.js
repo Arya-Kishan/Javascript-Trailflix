@@ -19,6 +19,24 @@ let bellopen = document.querySelector(".bellopen")
 let heading = document.querySelector(".heading")
 let profile = document.querySelectorAll(".profile")
 let movie_namelist = ""
+
+window.onpopstate = function (event) {
+    ul.style.display = "none"
+    less.style.display = "none"
+    more.style.display = "block"
+
+    bellclose.style.display = "none"
+    bellopen.style.display = "block"
+    let div_bell = document.querySelectorAll(".bell")
+    div_bell.forEach((e) => {
+        e.style.transition = "all .4s ease"
+        e.style.transform = "translateX(-100%)"
+        setTimeout(() => {
+            e.style.display = "none"
+        }, 1000);
+    })
+}
+
 const anchorRoute = (b)=>{
     let obj = { 'id': b.dataset.id, 'name': b.dataset.name }
     obj = JSON.stringify(obj)
@@ -104,6 +122,7 @@ const handlePlay = async () => {
 }
 
 const handleBell = (a) => {
+    window.history.pushState({ page: 1 }, "", "")
     ul.style.display = 'none'
     less.style.display = 'none'
     more.style.display = 'block'
@@ -133,6 +152,7 @@ const handleBellClose = (a) => {
 }
 
 const handleMoreCategory = () => {
+    window.history.pushState({ page: 1 }, "", "")
     ul.style.display = "block"
     more.style.display = "none"
     less.style.display = "block"

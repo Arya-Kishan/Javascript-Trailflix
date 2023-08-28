@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./Javascript/script.js" defer></script>
     <title>TRAIL FLIX</title>
 </head>
 
@@ -68,11 +67,11 @@
                                 porro.</span>
                             <div class="btn_bg">
                                 <button onclick="header_trailer()" class="btn playbtn">
-                                    <div><img class="btn_img" src="./Images/play.png" alt="" srcset="">
-                                    </div>Play
+                                    <img class="btn_img" src="./Images/play.png" alt="" srcset="">
+                                    <span>Play</span>
                                 </button>
                                 <button onclick="pause_func()" class="btn pausebtn">
-                                    <div><img class="btn_img" src="./Images/pause.png" alt="" srcset=""></div>Pause
+                                    <img class="btn_img" src="./Images/pause.png" alt="" srcset=""><span>Pause</span>
                                 </button>
                             </div>
                         </div>
@@ -84,18 +83,11 @@
 
         <!-- CATEGORY------------------ -->
         <section class="main_category"></section>
-        <footer>
-            <div class="foot2">
-                <b>Copyright &copy; 2022 Arya Kishan</b>
-            </div>
-        </footer>
 
     </section>
 
     <!-- VIDEO SECTION -->
     <section class="movie_trailer"></section>
-
-    <div class="error_pop"><img src="./Images/sorry2.png" alt="" srcset=""></div>
 
     <div class="select_main">
         <div class="select">
@@ -111,7 +103,6 @@
 
     <div class="redinfo_main">
         <div class="redinfo">
-            <div class="infoAutoTrailer"></div>
             <h1 class="redinfo_name">TITLE NAME</h1>
             <div>
                 <span>Language : <span class="redinfo_language">language</span></span>
@@ -139,6 +130,12 @@
         <div class="redtrailer"></div>
     </div>
 
+    <footer>
+        <div class="foot2">
+            <b>Copyright &copy; 2022 Arya Kishan</b>
+        </div>
+    </footer>
+    <script src="./Javascript/script.js"></script>
 </body>
 
 </html>
