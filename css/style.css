@@ -351,22 +351,22 @@ video {
 
 /* ---------------RED INFO---------------------- */
 .redinfo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 20px;
     box-shadow: 0 0 10px 7px white;
     background-color: black;
     min-height: 72vh;
     min-width: 50vh;
     display: flex;
-    gap: 5vh;
-    overflow: scroll;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    gap: 5vh;
+    overflow: scroll;
     padding: 2vw;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 .redinfo_name{
     color: yellow;
@@ -384,6 +384,10 @@ video {
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+.redinfo div:nth-child(4) {
+    padding: 0 3vh;
+    font-size: large;
 }
 
 /* --------------TRAILER--------------- */
@@ -536,18 +540,12 @@ iframe {
         transform: none;
     }
 
-    .redinfo {
-        border-radius: 0;
-        width: 90vw;
-        height: 80vh;
-    }
     .redinfo button{
         padding: 2vh 5vh;
     }
 
     .redinfo_img img {
         width: 90%;
-        height: 100%;
     }
 
     .tap {
