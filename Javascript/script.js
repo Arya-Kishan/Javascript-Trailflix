@@ -133,11 +133,11 @@ const pause_func = () => {
 const header_trailer = async () => {
     pausebtn.style.display = "block"
     playbtn.style.display = "none"
-    // let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${header_trailer_name}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
-    // response = await response.json()
-    // let videoID = response.items[0].id.videoId
-    // header_box2.innerHTML = `<iframe class="header_video_trailer" width="100%" height="80%"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1" allowfullscreen></iframe>`
-    header_box2.innerHTML = `<iframe width="100%" height="80%" src="https://www.youtube.com/embed/rp1aU3SileM?si=i5pJvSevhcyI-Bma" ></iframe>`
+    let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${header_trailer_name}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
+    response = await response.json()
+    let videoID = response.items[0].id.videoId
+    header_box2.innerHTML = `<iframe class="header_video_trailer" width="100%" height="80%"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1" allowfullscreen></iframe>`
+    // header_box2.innerHTML = `<iframe width="100%" height="80%" src="https://www.youtube.com/embed/rp1aU3SileM?si=i5pJvSevhcyI-Bma" ></iframe>`
 }
 
 
@@ -222,22 +222,23 @@ const handleCatch = () => {
 
 let redinfo_moviename = "";
 
-const handleInfoPlay = () => {
-        //     let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${a.dataset.name}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
-    // response = await response.json()
+const handleInfoPlay = async () => {
 
-    // let videoID = response.items[0].id.videoId
-
-    // infoAutoTrailer.innerHTML = `<div><iframe class="header_video_trailer info_video_trailer" width="560" height="315"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1&rel=0&showinfo=0" allowfullscreen></iframe></div>`
-    
     redinfo.style.display = 'none'
     redtrailer.style.display = 'flex'
     main_body.style.pointerEvents = "none"
 
-    redtrailer.innerHTML = `<iframe width="100%" height="80%" src="https://www.youtube.com/embed/rp1aU3SileM?si=i5pJvSevhcyI-Bma" ></iframe><button onclick="handleVideo()">Close</button>`
-    
+    let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${a.dataset.name}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
+    response = await response.json()
+
+    let videoID = response.items[0].id.videoId
+
+    redtrailer.innerHTML = `<div><iframe class="header_video_trailer info_video_trailer" width="560" height="315"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1&rel=0&showinfo=0" allowfullscreen></iframe></div>`
+
+    // redtrailer.innerHTML = `<iframe width="100%" height="80%" src="https://www.youtube.com/embed/rp1aU3SileM?si=i5pJvSevhcyI-Bma" ></iframe><button onclick="handleVideo()">Close</button>`
+
 }
-const handleVideo = ()=>{
+const handleVideo = () => {
     redtrailer.innerHTML = ''
     redtrailer.style.display = 'none'
     navbar.style.display = 'flex'
@@ -252,7 +253,7 @@ const handleInfoClose = () => {
 }
 
 const handleInfoLetter = async (a) => {
-    
+
     main_body.style.pointerEvents = "none"
     redinfo.style.display = 'flex'
     navbar.style.display = 'none'
@@ -302,7 +303,7 @@ select.addEventListener("click", (e) => {
     select.style.transform = "translateX(-100%)"
 })
 
-const handlegif = ()=>{
+const handlegif = () => {
     let gif = document.querySelector(".gif")
     gif.className = 'largegif'
     setTimeout(() => {

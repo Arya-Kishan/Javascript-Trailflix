@@ -417,6 +417,7 @@ iframe {
     transition: all ease-in-out .5s;
 }
 .gif img{
+    transition: all ease-in-out .5s;
     height: 30px;
     width: 30px;
 }
@@ -430,6 +431,7 @@ iframe {
     transition: all ease-in-out .5s;
 }
 .largegif img{
+    transition: all ease-in-out .5s;
     height: 30vh;
     width: 30vh;
 }
