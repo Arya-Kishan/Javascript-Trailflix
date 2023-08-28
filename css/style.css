@@ -31,6 +31,10 @@ button {
 
 /* -------NAVBAR---------- */
 nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -186,6 +190,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     font-size: 1.5vw;
+    padding: 1vw ;
 }
 
 
@@ -349,8 +354,8 @@ video {
     border-radius: 20px;
     box-shadow: 0 0 10px 7px white;
     background-color: black;
-    min-height: 70vh;
-    min-width: 50vw;
+    min-height: 72vh;
+    min-width: 50vh;
     display: flex;
     gap: 5vh;
     overflow: scroll;
@@ -505,6 +510,9 @@ iframe {
         display: none;
     }
 
+    .category_headingdiv {
+        font-size: 2.5vw;
+    }
 
     .right-cont {
         position: fixed;
@@ -530,7 +538,7 @@ iframe {
 
     .redinfo {
         border-radius: 0;
-        width: 100vw;
+        width: 90vw;
         height: 80vh;
     }
     .redinfo button{

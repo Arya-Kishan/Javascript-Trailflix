@@ -222,18 +222,19 @@ const handleCatch = () => {
 
 let redinfo_moviename = "";
 
-const handleInfoPlay = async () => {
+const handleInfoPlay = async (a) => {
 
+    let moviename = a.parentElement.parentElement.firstElementChild.innerText
     redinfo.style.display = 'none'
     redtrailer.style.display = 'flex'
     main_body.style.pointerEvents = "none"
 
-    let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${a.dataset.name}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
+    let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${moviename}&key=AIzaSyAOOFrJ8QNGrnbJPyRytE6qlOqUXaz1XrM`);
     response = await response.json()
 
     let videoID = response.items[0].id.videoId
 
-    redtrailer.innerHTML = `<div><iframe class="header_video_trailer info_video_trailer" width="560" height="315"src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1&rel=0&showinfo=0" allowfullscreen></iframe></div>`
+    redtrailer.innerHTML = `<iframe class="header_video_trailer info_video_trailer" width="100%" height="80%" src="https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1&rel=0&showinfo=0" allowfullscreen></iframe><button onclick="handleVideo()">Close</button>`
 
     // redtrailer.innerHTML = `<iframe width="100%" height="80%" src="https://www.youtube.com/embed/rp1aU3SileM?si=i5pJvSevhcyI-Bma" ></iframe><button onclick="handleVideo()">Close</button>`
 
@@ -283,9 +284,6 @@ header.append(div)
 
 window.onscroll = function (e) {
     if (window.scrollY > 5) {
-        navbar.style.position = 'fixed'
-        navbar.style.left = '0'
-        navbar.style.top = '0'
         navbar.style.width = '100vw'
         navbar.style.backgroundColor = 'black'
     }
@@ -303,6 +301,9 @@ select.addEventListener("click", (e) => {
     select.style.transform = "translateX(-100%)"
 })
 
+
+
+
 const handlegif = () => {
     let gif = document.querySelector(".gif")
     gif.className = 'largegif'
@@ -310,7 +311,6 @@ const handlegif = () => {
         gif.className = 'gif'
     }, 2000);
 }
-
 if (screen.width < 550) {
     let div1 = document.createElement('div')
     div1.innerHTML = `<img onclick="handlegif()" src="Images/movie1.gif" alt="" srcset="">`
