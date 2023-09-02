@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+    <div class="box"></div>
+    <script>
+        const box = document.querySelector('.box')
+        let arr = ["arya","ravi","anand","rajat","earth","vishwa"]
+        const myFunction = ()=>{
+            input = document.getElementById('myInput').value;
+            arr.forEach((e)=>{
+                if (input == '') {
+                    
+                }else if(e.startsWith(input)){
+                    console.log(e)
+                    box.innerHTML += `<div>${e}</div>`
+                }
+            })
+        }
+    </script>
+</body>
+</html>

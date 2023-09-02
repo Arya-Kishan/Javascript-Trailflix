@@ -118,9 +118,17 @@ const hero_section = async () => {
 
     let num = Math.floor(Math.random() * hero.length)
 
+
+    movie_name.innerHTML = hero[num].title;
+    header_trailer_name = hero[num].title;
+    movie_description.innerHTML = hero[num].overview;
+    console.log(hero)
+
     header_box2.innerHTML = `<img src="https://image.tmdb.org/t/p/w500${hero[num].backdrop_path}">`
 
     image_url = `<img src="https://image.tmdb.org/t/p/w500${hero[num].backdrop_path}">`;
+
+
 }
 
 const pause_func = () => {
