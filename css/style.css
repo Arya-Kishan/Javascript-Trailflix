@@ -178,7 +178,7 @@ nav {
 }
 
 .main_category {
-    padding: 1vw;
+    padding: 2vw 2vw 6vw 2vw;
 }
 
 .category {
@@ -287,16 +287,33 @@ video {
         left: 0%;
     }
 }
-
+.select h1{
+    text-align: center;
+    border-bottom: 2px solid white;
+    padding-bottom: 10px;
+    margin-bottom: 50px;
+}
 .select_btn {
     width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
+.select_close{
+    z-index: 12;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 0 5px 4px white;
+}
 
 .select_btn button {
     padding: 10px;
+}
+.select_each{
+    margin-bottom: 50px;
 }
 
 .select_each div:nth-child(1) {
@@ -315,8 +332,9 @@ video {
     padding: 10px;
 }
 
-.select_each a {
+.select_each p {
     border: 2px solid rgb(255, 255, 255);
+    width: 100%;
     display: grid;
     place-items: center;
     border-radius: 15px;
@@ -329,16 +347,26 @@ video {
     right: 0;
     transition: all ease-in-out .2s;
     transform: translateX(100%);
+    background: linear-gradient(transparent,black);
+    width: 100vw;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
 
 }
 
-.tap_main2 {
+/* .tap_main2 {
+    width: 100vw;
     position: fixed;
     top: 0;
     right: 0;
     transition: all ease-in-out .2s;
     transform: translateX(0%);
-}
+    background: linear-gradient(transparent,black);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+} */
 
 .tap {
     background: linear-gradient(90deg,black, red);
@@ -432,7 +460,6 @@ iframe {
     position: fixed;
     top: 1%;
     right: 4%;
-    background-color: black;
     border-radius: 10px;
     padding: 1px;
     z-index: 11;

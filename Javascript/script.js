@@ -13,6 +13,7 @@ let select = document.querySelector(".select")
 let bellopen = document.querySelector(".bellopen")
 let bellclose = document.querySelector(".bellclose")
 let tap_main = document.querySelector(".tap_main")
+let tap_main2 = document.querySelector(".tap_main2")
 let tap = document.querySelector(".tap")
 let slide_left = document.querySelector(".slide_left")
 let redinfo_main = document.querySelector(".redinfo_main")
@@ -28,8 +29,10 @@ let redinfo_language = document.querySelector(".redinfo_language")
 let redinfo_img = document.querySelector(".redinfo_img")
 let movie_img = document.querySelectorAll(".movie_img")
 let navbar = document.querySelector('.navbar')
+let select_close = document.querySelector('.select_close')
 
 select.style.display = "none"
+select_close.style.display = "none"
 redinfo_main.style.display = "none"
 redtrailer.style.display = "none"
 let genre_id = [];
@@ -38,19 +41,15 @@ let genre_id = [];
 
 // WINDOW BACK BUTTON
 window.onpopstate = function (event) {
+
+    tap_main.style.transition = "all 1s ease";
+    tap_main.style.transform = "translateX(100%)";
+    
     if (select.style.display = 'block') {
         bellopen.style.display = "block"
         bellclose.style.display = "none"
         select.style.transition = "all .5s ease"
         select.style.transform = "translateX(-100%)"
-    }
-
-    if (tap_main.className == "tap_main2") {
-        tap_main.className = "tap_main"
-    }
-
-    if (redinfo_main.style.display = "flex") {
-        redinfo_main.style.display = "none"
     }
 
     redtrailer.style.display = 'none'
@@ -88,7 +87,7 @@ const category_movies = async (name, id) => {
     let path = arr1.map(element => {
         return (`<div>
             <div id="${element.original_title}">
-               <img class="movie_img" data-name='${element.original_title}' data-imdb=${element.vote_average} data-date=${element.release_date} data-poster=${element.backdrop_path} data-description='${element.overview}' data-language=${element.original_language} title='${element.title}' onclick="handleInfoLetter(this)" src=https://image.tmdb.org/t/p/w500${element.poster_path} alt="${element.original_title}" srcset="">
+               <img loading="lazy" class="movie_img" data-name='${element.original_title}' data-imdb=${element.vote_average} data-date=${element.release_date} data-poster=${element.backdrop_path} data-description='${element.overview}' data-language=${element.original_language} title='${element.title}' onclick="handleInfoLetter(this)" src=https://image.tmdb.org/t/p/w500${element.poster_path} alt="${element.original_title}" srcset="">
             </div>
          </div>`)
     }).join(" ");
@@ -183,7 +182,7 @@ const Movies_ID = async (category) => {
         let arr1 = movies.results
 
         let movies_names = arr1.map((e) => {
-            return `<a href="#${e.original_title}"><span onclick="handleBellClose()">${e.title}</span></a>`
+            return `<p id="${e.original_title}"><span onclick="handleBellClose(this)">${e.title}</span></p>`
         }).join(" ")
         select.innerHTML += `
         <div class="select_each">
@@ -197,35 +196,49 @@ const Movies_ID = async (category) => {
 
 bellclose.style.display = "none"
 const handleBellOpen = () => {
-    window.history.pushState({ page: 1 }, "", "")
     navbar.style.display = 'none'
     bellopen.style.display = "none"
     bellclose.style.display = "block"
+    select_close.style.display = "flex"
     select.style.display = "block"
     select.style.transition = "all .5s ease"
     select.style.transform = "translateX(0%)"
 }
 
-const handleBellClose = () => {
+const handleBellClose = (a) => {
     navbar.style.display = 'flex'
     bellclose.style.display = "none"
+    select_close.style.display = "none"
     bellopen.style.display = "block"
     select.style.transition = "all .5s ease"
     select.style.transform = "translateX(-100%)"
-    history.back()
     setTimeout(() => {
         select.style.display = "none"
     }, 1000);
+    console.log(a.parentElement.id)
+    let element = document.getElementById(`${a.parentElement.id}`)
+    element.scrollIntoView({block : "center"});
+    element.style.transition = "all 2s ease";
+    element.style.scale = '1.1';
+    setTimeout(() => {
+        element.styltransition = "all 2s ease";
+        element.style.scale = '1';
+    }, 2000);
+    setTimeout(() => {
+        element.styltransition = "all 2s ease";
+        element.style.scale = '1.1';
+    }, 4000);
+    setTimeout(() => {
+        element.styltransition = "all 2s ease";
+        element.style.scale = '1';
+    }, 6000);
+    
 }
 
 const handleCatch = () => {
-    if (tap_main.className == "tap_main") {
-        tap_main.className = "tap_main2"
-        window.history.pushState({ page: 1 }, "", "");
-    } else {
-        tap_main.className = "tap_main"
-        history.back()
-    }
+    tap_main.style.transition = "all 1s ease";
+    tap_main.style.transform = "translateX(0%)";
+    window.history.pushState({ id: 1 }, "", "")
 }
 
 let redinfo_moviename = "";
@@ -290,6 +303,7 @@ div.innerHTML = `<div class="header_video">
 header.append(div)
 
 
+
 window.onscroll = function (e) {
     if (window.scrollY > 5) {
         navbar.style.width = '100vw'
@@ -299,15 +313,6 @@ window.onscroll = function (e) {
         navbar.style.backgroundColor = 'transparent'
     }
 };
-
-select.addEventListener("click", (e) => {
-    history.back()
-    navbar.style.display = 'flex'
-    bellclose.style.display = "none"
-    bellopen.style.display = "block"
-    select.style.transition = "all .5s ease"
-    select.style.transform = "translateX(-100%)"
-})
 
 
 
@@ -321,7 +326,13 @@ const handlegif = () => {
 }
 if (screen.width < 550) {
     let div1 = document.createElement('div')
-    div1.innerHTML = `<img onclick="handlegif()" src="Images/movie1.gif" alt="" srcset="">`
+    div1.innerHTML = `<img onclick="handlegif()" src="Images/movie2.gif" alt="" srcset="">`
     div1.className = 'gif'
     document.body.append(div1)
 }
+
+tap_main.addEventListener('click',()=>{
+    tap_main.style.transition = "all 1s ease";
+    tap_main.style.transform = "translateX(100%)";
+    history.back()
+})
