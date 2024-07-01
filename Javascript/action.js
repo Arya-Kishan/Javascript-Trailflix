@@ -37,7 +37,7 @@ window.onpopstate = function (event) {
     })
 }
 
-const anchorRoute = (b)=>{
+const anchorRoute = (b) => {
     let obj = { 'id': b.dataset.id, 'name': b.dataset.name }
     obj = JSON.stringify(obj)
     localStorage.setItem('route', obj)
@@ -52,7 +52,7 @@ const fetch_movies = async () => {
     less.style.display = "none"
     bellclose.style.display = "none"
 
-    let response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=7fad363f58889077cd601fe2d0ed4fb7&with_genres=${route_id.id}`)
+    let response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=7fad363f58889077cd601fe2d0ed4fb7&with_genres=${route_id.id}`)
     response = await response.json()
     movie_namelist = response.results;
     let names = response.results.map((e) => {
@@ -101,7 +101,7 @@ const handleVideo = (e) => {
     trailer_main.style.display = "none"
 }
 
-const handleHome = ()=>{
+const handleHome = () => {
     history.back()
 }
 

@@ -44,7 +44,7 @@ window.onpopstate = function (event) {
 
     tap_main.style.transition = "all 1s ease";
     tap_main.style.transform = "translateX(100%)";
-    
+
     if (select.style.display = 'block') {
         bellopen.style.display = "block"
         bellclose.style.display = "none"
@@ -79,7 +79,7 @@ const first_fetch = async () => {
 
 // FETCHING MOVIES IMAGES AND ADDING TO WEBPAGE------------------------------------------
 const category_movies = async (name, id) => {
-    let movies = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=7fad363f58889077cd601fe2d0ed4fb7&with_genres=${id}`)
+    let movies = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=7fad363f58889077cd601fe2d0ed4fb7&with_genres=${id}`)
     movies = await movies.json()
     let arr1 = movies.results
 
@@ -217,7 +217,7 @@ const handleBellClose = (a) => {
     }, 1000);
     console.log(a.parentElement.id)
     let element = document.getElementById(`${a.parentElement.id}`)
-    element.scrollIntoView({block : "center"});
+    element.scrollIntoView({ block: "center" });
     element.style.transition = "all 2s ease";
     element.style.scale = '1.1';
     setTimeout(() => {
@@ -232,7 +232,7 @@ const handleBellClose = (a) => {
         element.styltransition = "all 2s ease";
         element.style.scale = '1';
     }, 6000);
-    
+
 }
 
 const handleCatch = () => {
@@ -331,7 +331,7 @@ if (screen.width < 550) {
     document.body.append(div1)
 }
 
-tap_main.addEventListener('click',()=>{
+tap_main.addEventListener('click', () => {
     tap_main.style.transition = "all 1s ease";
     tap_main.style.transform = "translateX(100%)";
     history.back()
